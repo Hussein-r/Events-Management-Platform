@@ -1,0 +1,40 @@
+<html>
+    <head>
+      <style>
+        p{
+          text-align:center;
+          color:seagreen;
+          font-size: 50px;
+        }
+        #m{
+          border:1px solid skyblue;
+          width:50%;
+          height:250px;
+          background-color: skyblue;
+        }
+      </style>
+      <script src="/jquery.js"></script>
+        <script src="/bootstrap.js"></script>
+        <link rel="stylesheet" href="/bootstrap.css">
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="http://localhost:8085/admin/profile">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                <a class="nav-item nav-link" href="http://localhost:8085/speakers/list">List Speakers <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="http://localhost:8085/event/list">List Events</a>
+                <a class="nav-item nav-link" href="http://localhost:8085/event/add">Add Events</a>
+                <a class="nav-item nav-link" href="http://localhost:8085/login">Logout</a>
+              </div>
+            </div>
+          </nav>
+          <div id="m">
+            <p>Hello Admin <%=LoginName%></p>
+          </div>
+
+    </body>
+</html>

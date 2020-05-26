@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<script src="/jquery.js"></script>
+        <script src="/bootstrap.js"></script>
+        <link rel="stylesheet" href="/bootstrap.css">
+	<title>Events</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="/images3/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/vendor3/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/fonts3/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/vendor3/animate/animate.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/vendor3/select2/select2.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/vendor3/perfect-scrollbar/perfect-scrollbar.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="/css3/util.css">
+	<link rel="stylesheet" type="text/css" href="/css3/main.css">
+<!--===============================================================================================-->
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="http://localhost:8085/admin/profile">Home</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+		  <span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+		  <div class="navbar-nav">
+			<a class="nav-item nav-link" href="http://localhost:8085/speakers/list">List Speakers <span class="sr-only">(current)</span></a>
+			<a class="nav-item nav-link" href="http://localhost:8085/event/list">List Events</a>
+			<a class="nav-item nav-link" href="http://localhost:8085/event/add">Add Events</a>
+			<a class="nav-item nav-link" href="http://localhost:8085/login">Logout</a>
+		  </div>
+		</div>
+	  </nav>
+	<div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+				<div class="table100">
+					<table>
+						<thead>
+							<tr class="table100-head">
+								<th class="column1">ID</th>
+								<th class="column2">Title</th>
+								<th class="column3">Event Date</th>
+								<th class="column4">Main Speaker</th>
+								<th class="column5">Other Speakers</th>
+                                <th class="column6">Edit</th>
+                                <th class="column6">Delete</th>
+                                
+							</tr>
+                        </thead>
+						<tbody>
+                            <%data.forEach((item)=>{%>
+								<tr>
+									<td class="column1"><%=item._id%></td>
+									<td class="column2"><%=item.title%></td>
+									<td class="column3"><%=item.event_date%></td>
+									<td class="column4"><%=item.mainSpeaker.FullName%></td>
+									<td class="column5">
+                                        <ul>
+                                            <%item.otherSpeakers.forEach((ittem)=>{%>
+                                            <li><%=ittem.FullName%></li>
+                                        </ul>
+                                            <%})%>
+                                    </td>
+                                    <td class="column6"><a id="edit" href="http://localhost:8085/event/edit/<%=item._id%>">Edit</a></td>
+                                    <td class="column7"><a id="delete" href="http://localhost:8085/event/delete/<%=item._id%>">Delete</a></td>
+								</tr>
+							<%})%>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	
+
+<!--===============================================================================================-->	
+	<script src="/vendor3/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/vendor3/bootstrap/js/popper.js"></script>
+	<script src="/vendor3/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/vendor3/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="/js3/main.js"></script>
+
+</body>
+</html>

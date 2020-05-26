@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="/jquery.js"></script>
+        <script src="/bootstrap.js"></script>
+        <link rel="stylesheet" href="/bootstrap.css">
+    <style>
+        label{
+            color:white;
+        }
+    </style>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <!-- Title Page-->
+    <title>Events</title>
+
+    <!-- Icons font CSS-->
+    <script src="/vendor2/jquery/Jquery.js"></script>
+    <link href="/vendor2/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="/vendor2/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="/vendor2/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="/tag/bootstrap-tagmanager.css" rel="stylesheet" media="all">
+    <link href="/vendor2/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="/css2/main.css" rel="stylesheet" media="all">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="http://localhost:8085/admin/profile">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link" href="http://localhost:8085/speakers/list">List Speakers <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="http://localhost:8085/event/list">List Events</a>
+            <a class="nav-item nav-link" href="http://localhost:8085/event/add">Add Events</a>
+            <a class="nav-item nav-link" href="http://localhost:8085/login">Logout</a>
+          </div>
+        </div>
+      </nav>
+    <div class="page-wrapper bg-gra-01 p-t-180 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w780">
+            <div class="card card-3">
+                <div class="card-heading"></div>
+                <div class="card-body">
+                    <h2 class="title">Edit Events</h2>
+                    <form action="http://localhost:8085/event/edit" method="POST">
+                        <div class="input-group">
+                            <input class="input--style-3" type="number" Hidden placeholder="ID" name="id" value=<%=events_data[0]._id%>>
+                        </div>
+                        <div class="input-group">
+                            <input class="input--style-3" type="text" placeholder="Title" name="title" value=<%=events_data[0].title%>>
+                        </div>
+                        <div class="input-group">
+                            <input class="input--style-3 js-datepicker" type="text" placeholder="Event Date" name="event_date" value=<%=events_data[0].event_date%>>
+                            <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+                        </div>
+                        <div class="input-group">
+                            <!-- <input class="input--style-3" type="text" placeholder="Main Speaker" name="mainSpeaker" value=<%=events_data[0].mainSpeaker.FullName%>> -->
+                            <label for="mainspeaker">Main Speaker:</label>
+                            <select id="mainspeaker" name="mainSpeaker">
+                                <%speakers_data.forEach((mainspeakeritem)=>{%>
+                                        <%if(mainspeakeritem.id == events_data[0].mainSpeaker.id){%>
+                                            <option selected value="<%=mainspeakeritem.id%>"><%=mainspeakeritem.FullName%></option>
+                                        <%}else{%>
+                                            <option value="<%=mainspeakeritem.id%>"><%=mainspeakeritem.FullName%></option>
+                                <%}})%>
+                            </select>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="otherspeakers">Other Speakers:</label>
+                            <select id="otherspeakers" multiple name="otherSpeakers">
+                                <%speakers_data.forEach((speakeritem)=>{%>
+                                    <% var flag=0 %>
+                                    <%for(var i=0 ; i < events_data[0].otherSpeakers.length; i++){%>
+                                        <% if(speakeritem.id == events_data[0].otherSpeakers[i].id){ %>
+                                            <option selected value="<%=speakeritem.id%>"><%=speakeritem.FullName%></option>
+                                            <%flag=1%>
+                                            <%break%> 
+                                        <% }} %>
+                                    <% if(flag==0){%>
+                                        <option value="<%=speakeritem.id%>"><%=speakeritem.FullName%></option>
+                                <%}})%>
+                            </select>
+                        </div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <div class="p-t-10">
+                            <button class="btn btn--pill btn--green" type="submit">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jquery JS-->
+    
+    <!-- Vendor JS-->
+    <script src="/vendor2/select2/select2.min.js"></script>
+    <script src="/vendor2/datepicker/moment.min.js"></script>
+    <script src="/vendor2/datepicker/daterangepicker.js"></script>
+    <script src="/tag/bootstrap-tagmanager.js"></script>
+
+    <!-- Main JS-->
+    <script src="/js2/global.js"></script>
+    <script type="text/javascript">
+        $(".tm-input").tagsManager();
+    </script>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>
+<!-- end document-->
